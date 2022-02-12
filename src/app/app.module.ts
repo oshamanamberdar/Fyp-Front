@@ -11,10 +11,26 @@ import { CustomerComponent } from './customer/customer.component';
 import { SupplierComponent } from './supplier/supplier.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatIconModule} from "@angular/material/icon";
-import {NbThemeModule, NbLayoutModule, NbAccordionModule} from '@nebular/theme';
+import {
+  NbThemeModule,
+  NbLayoutModule,
+  NbAccordionModule,
+  NbCardModule,
+  NbToastrModule,
+  NbButtonModule
+} from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import {MatButtonModule} from "@angular/material/button";
 import { FabricComponent } from './fabric/fabric.component';
+import {HttpClientModule} from "@angular/common/http";
+import { AddCustomerComponent } from './customer/add-customer/add-customer.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {RouterModule} from "@angular/router";
+import { AddFabricComponent } from './fabric/add-fabric/add-fabric.component';
+import { AddSupplierComponent } from './supplier/add-supplier/add-supplier.component';
+import {NgbActiveModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {MatDialogModule} from "@angular/material/dialog";
+
 
 
 @NgModule({
@@ -23,7 +39,10 @@ import { FabricComponent } from './fabric/fabric.component';
     DashboardComponent,
     CustomerComponent,
     SupplierComponent,
-    FabricComponent
+    FabricComponent,
+    AddCustomerComponent,
+    AddFabricComponent,
+    AddSupplierComponent
   ],
   imports: [
     BrowserModule,
@@ -33,15 +52,24 @@ import { FabricComponent } from './fabric/fabric.component';
     LayoutModule,
     MatCardModule,
     MatIconModule,
-    NbThemeModule.forRoot({name: 'default'}),
+    NbThemeModule.forRoot(),
     NbLayoutModule,
     NbEvaIconsModule,
     MatButtonModule,
     NbAccordionModule,
+    HttpClientModule,
+    NbCardModule,
+    ReactiveFormsModule,
+    FormsModule,
+    RouterModule,
+    NbButtonModule,
+    NgbModule,
+    MatDialogModule,
+
 
   ],
 
-  providers: [],
+  providers: [NgbActiveModal,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

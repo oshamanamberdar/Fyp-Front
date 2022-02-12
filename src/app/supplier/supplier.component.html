@@ -1,1 +1,53 @@
-<p>supplier works!</p>
+<mat-card>
+  <mat-card-title style="color: coral">Suppliers</mat-card-title>
+  <mat-card-content>
+    <div mat-dialog-actions align="end">
+      <button mat-raised-button  (click)="routeToAddSupplier()" color="primary" >Add Supplier</button>
+    </div>
+    <hr>
+      <table class="table table-bordered table-responsive-md table-sm sb-small text-center tab"  style=" width: 100%">
+        <thead>
+        <tr class="sb-bg-dark text-white">
+          <th>ID</th>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Address</th>
+          <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="text-center" *ngFor="let supplier of suppliers; let i=index">
+          <td>{{supplier.id}}</td>
+          <td>{{supplier.name}}</td>
+          <td>{{supplier.phone}}</td>
+          <td>{{supplier.address}}</td>
+          <td>
+            <button (click)="open(content)"  style="height: min-content; width: min-content; color: red" >
+              <mat-icon >delete</mat-icon>
+            </button>
+            <ng-template #content let-c="close" let-d="dismiss">
+              <div class="modal-header">
+                <h1 class="modal-title" id="modal-basic-title" style="color:red">I am being Lost </h1>
+                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <strong>Id: {{supplier.id}}</strong>
+                <br>
+                <strong>Name : {{supplier.name}}</strong>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="deleteSupplier(supplier.id)">Delete</button>
+              </div>
+            </ng-template>
+            <button   style="height: min-content; width: min-content; color: darkcyan" >
+              <mat-icon >edit</mat-icon>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+  </mat-card-content>
+</mat-card>
+
